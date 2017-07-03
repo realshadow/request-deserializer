@@ -1,0 +1,37 @@
+{
+    "name": "realshadow/request-deserializer",
+    "description": "Webland's Laravel based API wrapper",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lukas Homza",
+            "email": "lukashomz@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "dingo/api": "v1.0.0-beta8",
+        "justinrainbow/json-schema": "^5.0",
+        "jms/serializer": "^1.7",
+        "mews/purifier": "^2.0",
+        "doctrine/cache": "^1.6"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "1.0.*",
+        "orchestra/testbench": "~3.0",
+        "phpunit/phpunit": "^6.2",
+        "mockery/mockery": "^0.9.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Realshadow\\RequestDeserializer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Realshadow\\RequestDeserializer\\Testing\\": "tests/"
+        }
+    },
+    "prefer-stable": true
+}

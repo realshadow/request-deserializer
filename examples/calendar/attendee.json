@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "email": {
+            "type": "string",
+            "format": "email",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "required": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+    "required": [
+        "email"
+    ]
+}

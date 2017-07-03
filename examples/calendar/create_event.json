@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+        },
+        "description": {
+            "type": ["null", "string"],
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "starts_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "ends_at": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "attendees": {
+            "type": ["null", "array"],
+            "minItems": 1,
+            "items": [
+                {
+                    "type": "object",
+                    "allOf": [
+                        {
+                            "$ref": "file://attendee.json"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "required": [
+        "name",
+        "starts_at",
+        "ends_at"
+    ]
+}
