@@ -62,8 +62,6 @@ class ConvertCommandTest extends \Orchestra\Testbench\TestCase
 
     public function testShouldConvertSchemaToRequest()
     {
-        $filesystem = app('files');
-
         vfsStream::setup('root', null);
 
         $target = 'root/CreateRequest.php';
@@ -80,9 +78,9 @@ class ConvertCommandTest extends \Orchestra\Testbench\TestCase
             '--no-interaction' => true,
         ]);
 
-        $this->assertEquals(
-            $filesystem->get(__DIR__ . '/../../../Fixtures/schema/convert/request.php'),
-            $filesystem->get(vfsStream::url($target))
+        $this->assertFileEquals(
+            __DIR__ . '/../../../Fixtures/schema/convert/request.php',
+            vfsStream::url($target)
         );
     }
 

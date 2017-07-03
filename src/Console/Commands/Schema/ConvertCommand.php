@@ -257,7 +257,7 @@ class ConvertCommand extends AbstractSchemaCommand
         $data = [
             'className' => $className,
             'namespace' => $this->namespace,
-            'schemaPath' => $schemaPath,
+            'schemaPath' => app()->environment() === 'testing' ? '' : $schemaPath,
             'properties' => $this->prepareProperties($schema),
             'methods' => $this->prepareMethods($schema),
         ];

@@ -37,7 +37,7 @@ class {className} implements RequestInterface
      */
     public function getSchema()
     {
-        return base_path('{schemaPath}');
+        return '{schemaPath}';
     }
 
 {methods}
