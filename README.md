@@ -5,7 +5,6 @@
 
 Package for providing JSON schema validation and request deserialization for API's built on top of [Dingo API](https://github.com/dingo/api).
 
-
 ## Installation
 
 Since this package is built on top [Dingo API](https://github.com/dingo/api) it has to be installed first, see its installation instructions for details.
@@ -25,13 +24,13 @@ Add package provider to list of providers in `app.php` configuration file
 and add the request deserialization middleware to Kernel
 
 ```
-Realshadow\RequestDeserializer\Http\Middleware\RequestDeserializationMiddleware
+Realshadow\RequestDeserializer\Http\Middleware\RequestDeserializationMiddleware::class
 ```
 
 And for the last step publish configuration files with
 
 ```
-php artisan vendor:publish --provider="Realshadow\RequestDeserializer\Providers\LaravelServiceProvider"
+php artisan vendor:publish --provider="Realshadow\RequestDeserializer\Providers\LaravelServiceProvider
 ```
 
 I should note that this package relies on [Purifier](https://github.com/mewebstudio/Purifier) package and if you are using it, you will have to update its configuration accordingly or use
