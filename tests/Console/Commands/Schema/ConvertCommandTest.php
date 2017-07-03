@@ -21,6 +21,15 @@ class ConvertCommandTest extends \Orchestra\Testbench\TestCase
         return ['Realshadow\RequestDeserializer\Providers\LaravelServiceProvider'];
     }
 
+    protected function getEnvironmentSetUp($app)
+    {
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('request_deserializer.request', [
+            'schema_path'   => dirname(__DIR__),
+            'publish_path' => '',
+        ]);
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Provided JSON schema does not exist.
@@ -29,7 +38,7 @@ class ConvertCommandTest extends \Orchestra\Testbench\TestCase
     {
         vfsStream::setup('root', null);
 
-        \Artisan::call('schema:convert', [
+        $this->artisan('schema:convert', [
             'schema' => 'foo/bar/baz',
             'request' => vfsStream::url('root'),
             '--no-interaction' => true,
@@ -44,8 +53,8 @@ class ConvertCommandTest extends \Orchestra\Testbench\TestCase
     {
         vfsStream::setup('root', null);
 
-        \Artisan::call('schema:convert', [
-            'schema' => 'tests/Fixtures/schema/convert/no_properties.json',
+        $this->artisan('schema:convert', [
+            'schema' => '../../Fixtures/schema/convert/no_properties.json',
             'request' => vfsStream::url('root'),
             '--no-interaction' => true,
         ]);
@@ -55,25 +64,19 @@ class ConvertCommandTest extends \Orchestra\Testbench\TestCase
     {
         $filesystem = app('files');
 
-        $command = \Mockery::mock(
-            '\Realshadow\RequestDeserializer\Console\Commands\Schema\ConvertCommand[anticipate]',
-            [$this->app->make('files')]
-        );
-
-        $command->shouldReceive('anticipate')
-            ->once()
-            ->andReturn('Realshadow\RequestDeserializer\Testing\Fixtures\Schema');
-
-        $this->app->make(Kernel::class)
-            ->registerCommand($command);
-
         vfsStream::setup('root', null);
 
         $target = 'root/CreateRequest.php';
 
-        \Artisan::call('schema:convert', [
-            'schema' => 'tests/Fixtures/schema/convert/schema.json',
-            'request' => vfsStream::url($target),
+        $this->app['config']->set('request_deserializer.request', [
+            'schema_path'   => dirname(__DIR__),
+            'publish_path' => vfsStream::url('root'),
+            'namespace' => 'App\Requests'
+        ]);
+
+        $this->artisan('schema:convert', [
+            'schema' => '../../Fixtures/schema/convert/schema.json',
+            'request' => 'CreateRequest.php',
             '--no-interaction' => true,
         ]);
 

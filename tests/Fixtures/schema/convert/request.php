@@ -1,6 +1,6 @@
 <?php
 
-namespace Realshadow\RequestDeserializer\Testing\Fixtures\Schema;
+namespace App\Requests;
 
 use Realshadow\RequestDeserializer\Contracts\RequestInterface;
 use JMS\Serializer\Annotation as JMS;
@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Request definition of CreateRequest
  *
- * @package Realshadow\RequestDeserializer\Testing\Fixtures\Schema
+ * @package App\Requests
  */
 class CreateRequest implements RequestInterface
 {
@@ -62,7 +62,7 @@ class CreateRequest implements RequestInterface
      */
     public function getSchema()
     {
-        return base_path('tests/Fixtures/schema/convert/schema.json');
+        return base_path('/var/www/html/request/request-deserializer/tests/Console/Commands/../../Fixtures/schema/convert/schema.json');
     }
 
     /**
