@@ -1,3 +1,6 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/realshadow/request-deserializer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/realshadow/request-deserializer/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/realshadow/request-deserializer/badges/build.png?b=master)](https://scrutinizer-ci.com/g/realshadow/request-deserializer/build-status/master)
+
 # Request deserializer
 
 Package for providing JSON schema validation and request deserialization for API's built on top of [Dingo API](https://github.com/dingo/api).
