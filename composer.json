@@ -1,6 +1,6 @@
 {
     "name": "realshadow/request-deserializer",
-    "description": "Webland's Laravel based API wrapper",
+    "description": "Package for providing JSON schema validation and request deserialization for API's built on top of Dingo API",
     "type": "library",
     "license": "MIT",
     "authors": [
